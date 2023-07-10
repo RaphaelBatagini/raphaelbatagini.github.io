@@ -1,31 +1,31 @@
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import PostCard from '@/components/post-card';
-import { Post } from '@/definitions';
-
-const mockData = Array.from({ length: 29 }, (_, index) => ({
-  id: index + 1,
-  title: `Post ${index + 1}`,
-  cover: 'https://picsum.photos/300/300',
-  tags: ['tag1', 'tag2', 'tag3'],
-  categories: ['category1', 'category2'],
-  author: 'Raphael Batagini',
-  publishDate: '2023-07-07',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget fermentum aliquam, nunc nisl aliquet nunc, vitae aliquam nisl'
-}));
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import PostCard from "@/components/post-card";
+import { Post } from "@/definitions";
+import { notionCreatePostObjects } from "@/helpers/notion-create-post-object";
 
 const pageLength = 5;
 
-export default function Article({ posts, currentPage, totalPages }: { posts: Post[], currentPage: number, totalPages: number }) {
+export default function Article({
+  posts,
+  currentPage,
+  totalPages,
+  totalPosts,
+}: {
+  posts: Post[];
+  currentPage: number;
+  totalPages: number;
+  totalPosts: number;
+}) {
   const router = useRouter();
 
-  const handlePagination = (type: 'previous' | 'next') => {
+  const handlePagination = (type: "previous" | "next") => {
     let nextPage = currentPage;
 
-    if (type === 'previous' && currentPage > 1) {
+    if (type === "previous" && currentPage > 1) {
       nextPage = currentPage - 1;
-    } else if (type === 'next' && currentPage < totalPages) {
+    } else if (type === "next" && currentPage < totalPages) {
       nextPage = currentPage + 1;
     }
 
@@ -33,11 +33,9 @@ export default function Article({ posts, currentPage, totalPages }: { posts: Pos
   };
 
   return (
-    <div className="grid grid-cols-12 my-4">
-      <div className="col-span-12 lg:col-span-6 lg:col-start-4">
-        <h1 className="text-3xl my-4">
-          Listing articles from {pageLength * (currentPage - 1) + 1} to {pageLength * currentPage}
-        </h1>
+    <div className="grid grid-cols-12">
+      <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
+        <h1 className="text-3xl my-4">Articles</h1>
 
         {posts.map((post) => (
           <Link key={post.id} href={`/articles/read/${post.id}`}>
@@ -46,36 +44,76 @@ export default function Article({ posts, currentPage, totalPages }: { posts: Pos
         ))}
 
         {/* Pagination */}
-        <div className="flex justify-center mt-4">
-          <button
-            className={`px-2 py-1 rounded-md ${
-              currentPage === 1 ? 'text-gray-500 cursor-not-allowed' : 'text-gray-700 hover:text-gray-900'
-            }`}
-            onClick={() => handlePagination('previous')}
-            disabled={currentPage === 1}
-          >
-            <FiArrowLeft className="inline-block mr-1" />
-            Previous
-          </button>
+        <div className="flex flex-col md:flex-row place-content-between">
+          <div className="flex items-center justify-center">
+            <p>
+              Showing articles {pageLength * (currentPage - 1) + 1}-
+              {pageLength * currentPage} of a total of {totalPosts} { totalPosts === 1 ? "article" : "articles" }
+            </p>
+          </div>
+          <div className="flex mt-4 justify-center lg:mt-0">
+            <button
+              className={`px-2 py-1 rounded-md ${
+                currentPage === 1
+                  ? "text-gray-500 cursor-not-allowed"
+                  : "text-gray-700 hover:text-gray-900"
+              }`}
+              onClick={() => handlePagination("previous")}
+              disabled={currentPage === 1}
+            >
+              <FiArrowLeft className="inline-block mr-1" />
+              Previous
+            </button>
 
-          <button
-            className={`ml-4 px-2 py-1 rounded-md ${
-              currentPage === totalPages ? 'text-gray-500 cursor-not-allowed' : 'text-gray-700 hover:text-gray-900'
-            }`}
-            onClick={() => handlePagination('next')}
-            disabled={currentPage === totalPages}
-          >
-            Next
-            <FiArrowRight className="inline-block ml-1" />
-          </button>
+            <button
+              className={`ml-4 px-2 py-1 rounded-md ${
+                currentPage === totalPages
+                  ? "text-gray-500 cursor-not-allowed"
+                  : "text-gray-700 hover:text-gray-900"
+              }`}
+              onClick={() => handlePagination("next")}
+              disabled={currentPage === totalPages}
+            >
+              Next
+              <FiArrowRight className="inline-block ml-1" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+async function getPostsFromNotion(): Promise<Post[]> {
+  const result = await fetch(
+    "https://api.notion.com/v1/databases/88b1f7db-47b7-4a48-8d22-9f52cc49fb0b/query",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NOTION_SECRET}`,
+        "Notion-Version": "2022-06-28",
+      },
+      body: JSON.stringify({
+        filter: {
+          property: "published",
+          checkbox: {
+            equals: true,
+          },
+        },
+      }),
+    }
+  );
+
+  const posts = await result.json();
+
+  return notionCreatePostObjects(posts);
+}
+
 export async function getStaticPaths() {
-  const totalPosts = mockData.length;
+  const posts = await getPostsFromNotion();
+
+  const totalPosts = posts.length;
   const postsPerPage = 5;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
@@ -96,14 +134,18 @@ export async function getStaticProps({ params }: { params: any }) {
   const startIndex = (parseInt(page) - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
 
-  const posts = mockData.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(mockData.length / postsPerPage);
+  const posts = await getPostsFromNotion();
+
+  const totalPosts = posts.length;
+  const pagePosts = posts.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(posts.length / postsPerPage);
 
   return {
     props: {
-      posts,
+      posts: pagePosts,
       currentPage: parseInt(page),
       totalPages,
+      totalPosts,
     },
   };
 }

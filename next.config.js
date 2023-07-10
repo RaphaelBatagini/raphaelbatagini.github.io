@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['picsum.photos'],
+    domains: [
+      's3.us-west-2.amazonaws.com'
+    ],
   },
   async redirects() {
     return [
