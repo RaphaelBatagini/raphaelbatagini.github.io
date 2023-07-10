@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { FiMenu, FiX } from 'react-icons/fi';
+import data from '../data.json';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-white text-lg font-bold">
-              Raphael Batagini
+              { data.site.title }
             </Link>
           </div>
           <div className="hidden md:block">

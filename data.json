@@ -1,4 +1,10 @@
 {
+  "site": {
+    "title": "Raphael Batagini",
+    "description": "Technology, Programming, and other stuff",
+    "author": "Raphael Batagini",
+    "email": "raphabatagini@gmail.com"
+  },
   "social": {
     "youtube": "https://www.youtube.com/channel/UCVL1yn5X1RBkBMqi1K2W7iA",
     "twitter": "https://twitter.com/raphaelbatagini",
