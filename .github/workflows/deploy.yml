@@ -28,6 +28,11 @@ jobs:
       - name: Build
         run: |
           NOTION_SECRET=$NOTION_SECRET NOTION_POSTS_DATABASE_ID=$NOTION_POSTS_DATABASE_ID npm run build
+          pwd
+          ls -al
+          cd .next/server/pages
+          pwd
+          ls -al
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
