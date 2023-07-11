@@ -4,6 +4,8 @@ import Link from "next/link";
 import PostCard from "@/components/post-card";
 import { Post } from "@/definitions";
 import { notionCreatePostObjects } from "@/helpers/notion-create-post-object";
+import { slugify } from "@/helpers/slugify";
+import { getPostsFromNotion } from "@/helpers/get-posts-from-notion";
 
 const pageLength = 5;
 
@@ -38,7 +40,7 @@ export default function Article({
         <h1 className="text-3xl my-4">Articles</h1>
 
         {posts.map((post) => (
-          <Link key={post.id} href={`/articles/read/${post.id}`}>
+          <Link key={post.id} href={`/article/${slugify(post.title)}/${post.id}`}>
             <PostCard post={post} />
           </Link>
         ))}
@@ -82,32 +84,6 @@ export default function Article({
       </div>
     </div>
   );
-}
-
-async function getPostsFromNotion(): Promise<Post[]> {
-  const result = await fetch(
-    "https://api.notion.com/v1/databases/88b1f7db-47b7-4a48-8d22-9f52cc49fb0b/query",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NOTION_SECRET}`,
-        "Notion-Version": "2022-06-28",
-      },
-      body: JSON.stringify({
-        filter: {
-          property: "published",
-          checkbox: {
-            equals: true,
-          },
-        },
-      }),
-    }
-  );
-
-  const posts = await result.json();
-
-  return notionCreatePostObjects(posts);
 }
 
 export async function getStaticPaths() {
