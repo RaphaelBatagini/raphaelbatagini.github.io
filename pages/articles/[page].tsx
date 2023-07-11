@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import PostCard from "@/components/post-card";
 import { Post } from "@/definitions";
-import { notionCreatePostObjects } from "@/helpers/notion-create-post-object";
 import { slugify } from "@/helpers/slugify";
 import { getPostsFromNotion } from "@/helpers/get-posts-from-notion";
 

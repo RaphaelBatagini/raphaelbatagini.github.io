@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }) => {
-  const post = await getPostFromNotionById(params.id as string);
+  const post = await getPostFromNotionById(params?.id as string);
 
   return {
     props: {

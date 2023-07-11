@@ -23,21 +23,21 @@ export default function Home() {
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">Explore, Learn, and Innovate</h2>
           <p className="text-gray-600">
-            Join me on an exciting journey through the world of software engineering. As an experienced Software Engineer and Technical Lead, I'm dedicated to pushing the boundaries of technology and solving complex problems. Together, let's delve into the latest trends and advancements in the industry.
+            { 'Join me on an exciting journey through the world of software engineering. As an experienced Software Engineer and Technical Lead, I\'m dedicated to pushing the boundaries of technology and solving complex problems. Together, let\'s delve into the latest trends and advancements in the industry.' }
           </p>
         </div>
 
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">Discover Inspiring Content</h2>
           <p className="text-gray-600">
-            Dive into my blog and YouTube channel, where I share valuable insights, tutorials, and best practices. Whether you're a beginner or a seasoned professional, you'll find a wealth of resources to enhance your technical skills. Stay ahead of the game with practical tips and keep up with the ever-evolving technology landscape.
+            { 'Dive into my blog and YouTube channel, where I share valuable insights, tutorials, and best practices. Whether you\'re a beginner or a seasoned professional, you\'ll find a wealth of resources to enhance your technical skills. Stay ahead of the game with practical tips and keep up with the ever-evolving technology landscape.' }
           </p>
         </div>
 
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">Embark on Your Learning Journey</h2>
           <p className="text-gray-600">
-            Are you ready to take your skills to the next level? Let's connect and explore the limitless possibilities of software engineering. Contact me today, and let's embark on this exciting learning journey together.
+            { 'Are you ready to take your skills to the next level? Let\'s connect and explore the limitless possibilities of software engineering. Contact me today, and let\'s embark on this exciting learning journey together.' }
           </p>
         </div>
       </div>
