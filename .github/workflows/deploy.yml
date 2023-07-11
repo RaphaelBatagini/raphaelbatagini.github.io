@@ -8,6 +8,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
 
     env:
       NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
@@ -15,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -28,14 +32,8 @@ jobs:
       - name: Build
         run: |
           NOTION_SECRET=$NOTION_SECRET NOTION_POSTS_DATABASE_ID=$NOTION_POSTS_DATABASE_ID npm run build
-          pwd
-          ls -al
-          cd .next/server/pages
-          pwd
-          ls -al
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.next/server/pages

@@ -43,7 +43,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 mt-8">
-        <Link href="/articles" className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg">
+        <Link href={data.links.articles} className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg">
           <FiArrowRight className="mr-2" /> Read My Blog
         </Link>
         <a href={data.social.youtube} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center bg-red-500 hover:bg-red-600 text-white text-lg font-medium px-6 py-3 rounded-lg">

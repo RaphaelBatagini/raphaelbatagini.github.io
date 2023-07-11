@@ -4,16 +4,9 @@ const nextConfig = {
     domains: [
       's3.us-west-2.amazonaws.com'
     ],
+    unoptimized: true,
   },
-  async redirects() {
-    return [
-      {
-        source: '/articles',
-        destination: '/articles/1',
-        permanent: true,
-      },
-    ]
-  },
+  output: 'export',
 }
 
 module.exports = nextConfig
