@@ -48,6 +48,7 @@ export function notionCreatePostObject(notionPost: NotionPost): Post {
   return {
     id: notionPost.id,
     title: notionPost.properties.title.title[0].plain_text,
+    description: '',
     cover: notionPost.properties.cover.files[0].file.url,
     categories: notionPost.properties.categories.multi_select.map((category) => category.name),
     tags: notionPost.properties.tags.multi_select.map((tag) => tag.name),
