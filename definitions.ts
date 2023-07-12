@@ -1,7 +1,10 @@
 export interface Post {
   id: string;
   title: string;
+  description: string;
   cover: string;
+  thumbnail?: string;
+  banner?: string;
   categories: Array<string>;
   tags: Array<string>;
   content: string;

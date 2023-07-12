@@ -6,15 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "serve": "npx serve@latest out"
   },
   "dependencies": {
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
+    "gray-matter": "^4.0.3",
+    "markdown-to-jsx": "^7.2.1",
     "next": "13.4.7",
     "postcss": "8.4.24",
     "react": "18.2.0",

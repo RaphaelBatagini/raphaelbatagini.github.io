@@ -5,6 +5,12 @@ import PostCard from "@/components/post-card";
 import { Post } from "@/definitions";
 import { slugify } from "@/helpers/slugify";
 import { getPostsFromNotion } from "@/helpers/get-posts-from-notion";
+import sharp from "sharp";
+import axios from "axios";
+import fs from "fs";
+import path from "path";
+import { GetStaticPaths, GetStaticPathsResult } from "next";
+import { getPosts } from "@/helpers/get-posts";
 
 const pageLength = 5;
 
@@ -39,7 +45,7 @@ export default function Article({
         <h1 className="text-3xl my-4">Articles</h1>
 
         {posts.map((post) => (
-          <Link key={post.id} href={`/article/${slugify(post.title)}/${post.id}`}>
+          <Link key={post.id} href={`/article/${post.id}`}>
             <PostCard post={post} />
           </Link>
         ))}
@@ -86,9 +92,9 @@ export default function Article({
 }
 
 export async function getStaticPaths() {
-  const posts = await getPostsFromNotion();
+  const articleFiles = fs.readdirSync(path.join('articles'));
 
-  const totalPosts = posts.length;
+  const totalPosts = articleFiles.length;
   const postsPerPage = 5;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
@@ -109,7 +115,7 @@ export async function getStaticProps({ params }: { params: any }) {
   const startIndex = (parseInt(page) - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
 
-  const posts = await getPostsFromNotion();
+  const posts = getPosts();
 
   const totalPosts = posts.length;
   const pagePosts = posts.slice(startIndex, endIndex);

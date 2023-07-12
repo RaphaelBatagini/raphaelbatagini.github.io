@@ -35,3 +35,8 @@ yarn-error.log*
 next-env.d.ts
 
 .env
+
+public/static/images/banners/*
+public/static/images/thumbnails/*
+!public/static/images/banners/.gitkeep
+!public/static/images/thumbnails/.gitkeep
