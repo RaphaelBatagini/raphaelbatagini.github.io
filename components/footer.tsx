@@ -11,13 +11,13 @@ const Footer = () => {
         </p>
         <div className="flex justify-center mt-4">
           <a href={data.social.twitter} target="_blank" rel="noopener noreferrer" className="mr-4">
-            <FiTwitter className="text-2xl text-white hover:text-blue-400" />
+            <FiTwitter aria-label='Twitter account' className="text-2xl text-white hover:text-blue-400" />
           </a>
           <a href={data.social.linkedin} target="_blank" rel="noopener noreferrer" className="mr-4">
-            <FiLinkedin className="text-2xl text-white hover:text-blue-400" />
+            <FiLinkedin aria-label='LinkedIn account' className="text-2xl text-white hover:text-blue-400" />
           </a>
           <a href={data.social.github} target="_blank" rel="noopener noreferrer">
-            <FiGithub className="text-2xl text-white hover:text-blue-400" />
+            <FiGithub aria-label='GitHub account' className="text-2xl text-white hover:text-blue-400" />
           </a>
         </div>
         <p className="mt-4 text-sm">

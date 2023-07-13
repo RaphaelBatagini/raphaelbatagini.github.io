@@ -41,6 +41,7 @@ export default function Navbar() {
               type="button"
               className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
               onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
             >
               { isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} /> }
             </button>

@@ -64,7 +64,7 @@ export default function Article({ post }: ArticleProps) {
           </Heading>
         </div>
 
-        <div className="my-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div className="my-8 flex flex-col sm:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex items-center text-gray-600">
             <FiUser className="mr-2" />
             <p>Written by:</p>
