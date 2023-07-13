@@ -8,6 +8,8 @@ import { compiler } from "markdown-to-jsx";
 import Heading from "@/components/typography/heading";
 import Paragraph from "@/components/typography/paragraph";
 import Code from "@/components/typography/code";
+import { Head } from "@/components/head";
+import PostBanner from "@/components/post-banner";
 
 interface ArticleProps {
   post: Post;
@@ -48,16 +50,12 @@ export default function Article({ post }: ArticleProps) {
 
   return (
     <div className="grid grid-cols-12 my-4">
+      <Head title={post.title} description={post.description} />
       <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div className="relative aspect-video mb-4">
-          {post.banner && (
+          {post.image && (
             <>
-              <Image
-                src={post.banner}
-                alt="Cover"
-                fill={true}
-                className="rounded-lg mb-4 object-cover"
-              />
+              <PostBanner post={post} />
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 rounded-lg" />
             </>
           )}

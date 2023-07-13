@@ -14,6 +14,14 @@ export const getPostBySlug = (slug: string): Post => {
   return markdownFileToPost(markdownPath);
 }
 
+const getPostThumbnailPath = (imageName: string): string => {
+  return path.join(`/static/images/post/thumbnails/${imageName}`);
+}
+
+const getPostBannerPath = (imageName: string): string => {
+  return path.join(`/static/images/post/banners/${imageName}`);
+}
+
 export const markdownFileToPost = (markdownPath: string): Post => {
   const markdownWithMeta = fs.readFileSync(markdownPath, 'utf-8').replace(/\\n/g, '\n');
   const { data: metadata, content } = matter(markdownWithMeta);
@@ -22,9 +30,7 @@ export const markdownFileToPost = (markdownPath: string): Post => {
     id: markdownPath.replace('.md', '').split('/')[1],
     title: metadata.title,
     description: metadata.description,
-    cover: metadata.image?? null,
-    thumbnail: metadata.image?? null,
-    banner: metadata.image?? null,
+    image: metadata.image,
     categories: metadata.categories,
     tags: metadata.tags,
     content,

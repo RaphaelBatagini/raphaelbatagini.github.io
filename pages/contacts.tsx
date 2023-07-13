@@ -1,10 +1,12 @@
 import { FaLinkedin, FaGithub, FaYoutube, FaTwitter } from 'react-icons/fa';
 import data from '../data.json';
 import Link from 'next/link';
+import { Head } from '@/components/head';
 
 export default function Contacts() {
   return (
     <div className="flex flex-col items-center my-10">
+      <Head title="Contacts" description="Get in touch with me" />
       <h1 className="text-3xl font-bold mb-4">Contact Me</h1>
       <p className="text-gray-600 mb-6">
         Feel free to reach out to me on social media or through the contact information provided below:

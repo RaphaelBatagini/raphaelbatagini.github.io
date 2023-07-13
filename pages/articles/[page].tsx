@@ -3,14 +3,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import PostCard from "@/components/post-card";
 import { Post } from "@/definitions";
-import { slugify } from "@/helpers/slugify";
-import { getPostsFromNotion } from "@/helpers/get-posts-from-notion";
-import sharp from "sharp";
-import axios from "axios";
 import fs from "fs";
 import path from "path";
-import { GetStaticPaths, GetStaticPathsResult } from "next";
 import { getPosts } from "@/helpers/get-posts";
+import { Head } from "@/components/head";
 
 const pageLength = 5;
 
@@ -41,6 +37,7 @@ export default function Article({
 
   return (
     <div className="grid grid-cols-12">
+      <Head title="Articles" description="See my blog posts" />
       <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <h1 className="text-3xl my-4">Articles</h1>
 

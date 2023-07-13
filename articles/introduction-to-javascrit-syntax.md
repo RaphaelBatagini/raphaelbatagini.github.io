@@ -1,7 +1,7 @@
 ---
 title: "Introduction to JavaScript Syntax: A Beginner's Guide"
 description: Learn the basics of JavaScript syntax with code examples. Understand variables, data types, operators, conditional statements, and loops in JavaScript.
-image: /static/images/js-code.jpg
+image: js-code.jpg
 date: 2023-07-12T18:35:03Z
 categories: ['JavaScript']
 tags: ['beginner']
@@ -137,5 +137,3 @@ do {
 Congratulations! You've now learned about variables, data types, assignment, comparison, and logical operators, as well as conditional statements and loops in JavaScript. These are the building blocks of any JavaScript program, and understanding them is crucial for becoming proficient in web development.
 
 We hope you found this blog post helpful. If you have any questions or need further assistance, feel free to leave a comment below. Happy coding!
-
-*Keywords for SEO: JavaScript Syntax, Introduction to JavaScript, JavaScript for Beginners, JavaScript Variables, Data Types in JavaScript, JavaScript Operators, Conditional Statements in JavaScript, JavaScript Loops, JavaScript Code Examples*
