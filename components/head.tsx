@@ -1,9 +1,8 @@
 import Head from "next/head";
-import data from "../data.json";
 
 function CustomHead({ title, description }: { title?: string, description?: string }) {
-  const titleText = data.site.title + (title ? ` - ${title}` : '');
-  const descriptionText = description || data.site.description;
+  const titleText = process.env.NEXT_PUBLIC_SITE_TITLE + (title ? ` - ${title}` : '');
+  const descriptionText = description ?? process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
 
   return (
     <Head>

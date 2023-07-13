@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Post } from "@/definitions";
 import { slugify } from "@/helpers/slugify";
-import Image from "next/image";
 import { FiUser, FiCalendar, FiTag } from "react-icons/fi";
 import { getPostBySlug, getPosts } from "@/helpers/get-posts";
 import { compiler } from "markdown-to-jsx";

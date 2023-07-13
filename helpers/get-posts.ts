@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { Post } from '@/definitions';
 import matter from 'gray-matter';
-import data from '../data.json';
 
 export const getPosts = () => {
   const markdownFiles = fs.readdirSync(path.join('articles'));
@@ -12,14 +11,6 @@ export const getPosts = () => {
 export const getPostBySlug = (slug: string): Post => {
   const markdownPath = path.join(`articles/${slug}.md`);
   return markdownFileToPost(markdownPath);
-}
-
-const getPostThumbnailPath = (imageName: string): string => {
-  return path.join(`/static/images/post/thumbnails/${imageName}`);
-}
-
-const getPostBannerPath = (imageName: string): string => {
-  return path.join(`/static/images/post/banners/${imageName}`);
 }
 
 export const markdownFileToPost = (markdownPath: string): Post => {
@@ -35,7 +26,7 @@ export const markdownFileToPost = (markdownPath: string): Post => {
     tags: metadata.tags,
     content,
     author: {
-      name: data.site.author,
+      name: process.env.NEXT_PUBLIC_AUTHOR_NAME ?? '',
     },
     publishDate: new Date(metadata.date).toDateString(),
   };
