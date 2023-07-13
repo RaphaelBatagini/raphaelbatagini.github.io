@@ -20,8 +20,6 @@ function CustomHead({
     description ?? process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
   const image = imagePath ?? process.env.NEXT_PUBLIC_AUTHOR_PHOTO;
 
-  console.log(imagePath);
-
   const { asPath } = useRouter();
 
   return (
@@ -39,14 +37,13 @@ function CustomHead({
       {/* Non-Essential, But Recommended */}
       <meta property="og:description" content={descriptionText} />
       <meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
-
       { !!imageAlt && (
-        <meta name="twitter:image:alt" content={ imageAlt } />
+        <meta name="og:image:alt" content={ imageAlt } />
       ) }
 
       {/* Non-Essential, But Required for Analytics */}
-      {/* <meta property="fb:app_id" content="your_app_id" />
-      <meta name="twitter:site" content="@website-username"></meta> */}
+      {/* <meta property="fb:app_id" content="your_app_id" /> */}
+      <meta name="twitter:site" content={process.env.NEXT_PUBLIC_TWITTER_ACCOUNT}></meta>
     </Head>
   );
 }

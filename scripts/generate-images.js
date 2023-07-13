@@ -55,6 +55,15 @@ async function generateImages() {
       752,
       423
     );
+
+    // Generating twitter banner
+    const twitterBannerPath = `${bannersFolder}/${post.id}-twitter.${post.image.split(".").pop()}`;
+    await optimizeImage(
+      `public/static/images/posts/${post.image}`,
+      twitterBannerPath,
+      800,
+      800
+    );
   }
 
   console.log(`Post images optimized!`);

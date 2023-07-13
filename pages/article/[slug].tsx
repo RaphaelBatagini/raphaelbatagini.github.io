@@ -9,6 +9,7 @@ import Paragraph from "@/components/typography/paragraph";
 import Code from "@/components/typography/code";
 import { Head } from "@/components/head";
 import PostBanner from "@/components/post-banner";
+import getTwitterImagePath from "@/helpers/get-twitter-image-path";
 
 interface ArticleProps {
   post: Post;
@@ -49,7 +50,7 @@ export default function Article({ post }: ArticleProps) {
 
   return (
     <div className="grid grid-cols-12 my-4">
-      <Head title={post.title} description={post.description} imagePath={`/static/images/posts/${post.image}`} type='article' />
+      <Head title={post.title} description={post.description} imagePath={getTwitterImagePath(post.image)} type='article' />
       <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div className="relative aspect-video mb-4">
           {post.image && (
