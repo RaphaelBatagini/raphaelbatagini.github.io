@@ -13,7 +13,7 @@ export default function Contacts() {
       </p>
       <div className="flex flex-col space-y-4 w-full lg:w-96">
         <a href={data.social.linkedin} target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-blue-500 hover:bg-blue-600 text-white text-lg font-medium py-3 rounded-lg">
+          <button className="flex items-center justify-center w-full bg-blue-800 hover:bg-blue-900 text-white text-lg font-medium py-3 rounded-lg">
             <FaLinkedin className="mr-3" />
             Connect with me on LinkedIn
           </button>
@@ -25,13 +25,13 @@ export default function Contacts() {
           </button>
         </a>
         <a href={data.social.youtube} target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-red-500 hover:bg-red-600 text-white text-lg font-medium py-3 rounded-lg">
+          <button className="flex items-center justify-center w-full bg-red-800 hover:bg-red-900 text-white text-lg font-medium py-3 rounded-lg">
             <FaYoutube className="mr-3" />
             Subscribe to my YouTube channel
           </button>
         </a>
         <a href={data.social.twitter} target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-blue-400 hover:bg-blue-500 text-white text-lg font-medium py-3 rounded-lg">
+          <button className="flex items-center justify-center w-full bg-cyan-800 hover:bg-cyan-900 text-white text-lg font-medium py-3 rounded-lg">
             <FaTwitter className="mr-3" />
             Follow me on Twitter
           </button>
