@@ -5,10 +5,11 @@ export default function PostThumbnail({ post, className }: { post: Post, classNa
   return (
     <Image
       src={`/static/images/posts/thumbnails/${post.id}.${post.image.split('.').pop()}`}
-      width={230}
-      height={230}
+      width={522}
+      height={522}
       alt="Post thumbnail"
       className={className}
+      loading="eager"
     />
   );
 }

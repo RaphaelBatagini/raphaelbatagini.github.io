@@ -9,6 +9,7 @@ export default function PostBanner({ post }: { post: Post }) {
       height={423}
       alt="Post banner"
       className="rounded-lg mb-4"
+      priority
     />
   );
 }

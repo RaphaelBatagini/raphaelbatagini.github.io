@@ -43,8 +43,8 @@ async function generateImages() {
     await optimizeImage(
       `public/static/images/posts/${post.image}`,
       thumbnailPath,
-      345,
-      345
+      522,
+      522
     );
 
     // Generating banner
