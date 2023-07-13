@@ -1,3 +1,4 @@
+import { Head } from "@/components/head";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiPlayCircle } from "react-icons/fi";
@@ -5,6 +6,7 @@ import { FiArrowRight, FiPlayCircle } from "react-icons/fi";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center my-10">
+      <Head />
       <div className="mb-10">
         <Image
           src={process.env.NEXT_PUBLIC_AUTHOR_PHOTO ?? '/static/images/me.jpeg'}

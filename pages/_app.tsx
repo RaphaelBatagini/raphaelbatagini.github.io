@@ -12,7 +12,6 @@ export default function MyApp({
 }) {
   return (
     <Fragment>
-      <Head />
       <Layout>
         <Component {...pageProps} />
       </Layout>
