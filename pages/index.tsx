@@ -8,13 +8,15 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center my-10">
       <Head />
       <div className="mb-10">
-        <Image
-          src={process.env.NEXT_PUBLIC_AUTHOR_PHOTO ?? '/static/images/me.jpeg'}
-          width={160}
-          height={160}
-          alt="Technology"
-          className="rounded-full object-cover"
-        />
+        { process.env.NEXT_PUBLIC_SOCIAL_GITHUB && (
+          <Image
+            src={`${process.env.NEXT_PUBLIC_SOCIAL_GITHUB}.png`}
+            width={160}
+            height={160}
+            alt="Technology"
+            className="rounded-full object-cover"
+          />
+        ) }
       </div>
       <h1 className="text-4xl font-bold mb-4 text-center">
         <Link
