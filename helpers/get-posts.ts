@@ -1,27 +1,65 @@
-import fs from 'fs';
-import path from 'path';
 import { Post } from '@/definitions';
 import matter from 'gray-matter';
+import axios from 'axios';
 
-export const getPosts = () => {
-  const markdownFiles = fs.readdirSync(path.join('articles'));
-  return markdownFiles.map((markdownFile) => markdownFileToPost(path.join(`articles/${markdownFile}`)));
-}
+const API_BASE_URL = 'https://api.github.com';
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const POSTS_REPO = process.env.POSTS_REPO;
+const POSTS_FOLDER = 'articles';
 
-export const getPostBySlug = (slug: string): Post => {
-  const markdownPath = path.join(`articles/${slug}.md`);
-  return markdownFileToPost(markdownPath);
-}
+export const getPosts = async () => {
+  const response = await axios.get(`${API_BASE_URL}/repos/${POSTS_REPO}/contents/${POSTS_FOLDER}`, {
+    headers: {
+      Authorization: `Bearer ${ACCESS_TOKEN}`,
+    },
+  });
+  const folderContents = response.data;
 
-export const markdownFileToPost = (markdownPath: string): Post => {
-  const markdownWithMeta = fs.readFileSync(markdownPath, 'utf-8').replace(/\\n/g, '\n');
-  const { data: metadata, content } = matter(markdownWithMeta);
+  const folders = folderContents.filter((content: any) => content.type === 'dir');
+
+  return Promise.all(
+    folders.map(async (folder: any) => {
+      const folderName = folder.name;
+      const markdownPath = `${POSTS_FOLDER}/${folderName}/article.md`;
+      const response = await axios.get(`${API_BASE_URL}/repos/${POSTS_REPO}/contents/${markdownPath}`, {
+        headers: {
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+      });
+      const file = response.data;
+
+      const fileUrl = file.download_url;
+      const markdownContent = await axios.get(fileUrl).then((response) => response.data);
+
+      return markdownFileToPost(folderName, markdownContent);
+    })
+  );
+};
+
+export const getPostBySlug = async (slug: string): Promise<Post> => {
+  const folderName = slug;
+  const markdownPath = `${POSTS_FOLDER}/${folderName}/article.md`;
+
+  const response = await axios.get(`${API_BASE_URL}/repos/${POSTS_REPO}/contents/${markdownPath}`, {
+    headers: {
+      Authorization: `Bearer ${ACCESS_TOKEN}`,
+    },
+  });
+  const file = response.data;
+
+  const fileUrl = file.download_url;
+  const markdownContent = await axios.get(fileUrl).then((response) => response.data);
+
+  return markdownFileToPost(slug, markdownContent);
+};
+
+export const markdownFileToPost = (slug: string, markdownContent: string): Post => {
+  const { data: metadata, content } = matter(markdownContent);
 
   return {
-    id: markdownPath.replace('.md', '').split('/')[1],
+    id: slug,
     title: metadata.title,
     description: metadata.description,
-    image: metadata.image,
     categories: metadata.categories,
     tags: metadata.tags,
     content,
@@ -31,4 +69,3 @@ export const markdownFileToPost = (markdownPath: string): Post => {
     publishDate: new Date(metadata.date).toDateString(),
   };
 };
-

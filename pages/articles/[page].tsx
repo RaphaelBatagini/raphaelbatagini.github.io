@@ -112,7 +112,7 @@ export async function getStaticProps({ params }: { params: any }) {
   const startIndex = (parseInt(page) - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
 
-  const posts = getPosts();
+  const posts = await getPosts();
 
   const totalPosts = posts.length;
   const pagePosts = posts.slice(startIndex, endIndex);

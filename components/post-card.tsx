@@ -6,11 +6,9 @@ import PostThumbnail from "./post-thumbnail";
 export default function PostCard({ post }: { post: Post }) {
   return (
     <div key={post.id} className="bg-white rounded-lg shadow-md hover:shadow-xl hover:bg-gray-100 p-4 mb-8 grid grid-cols-12 gap-4">
-      {post.image && (
-        <div className="col-span-12 md:col-span-4 aspect-square">
-          <PostThumbnail post={post} className="rounded-lg w-full"/>
-        </div>
-      )}
+      <div className="col-span-12 md:col-span-4 aspect-square">
+        <PostThumbnail post={post} className="rounded-lg w-full"/>
+      </div>
       <div className="col-span-12 md:col-span-8 flex flex-col">
         <div className="flex-grow flex flex-col">
           <p className="font-bold text-gray-950">{post.categories?.[0]}</p>

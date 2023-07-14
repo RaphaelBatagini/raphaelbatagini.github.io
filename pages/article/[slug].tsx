@@ -53,12 +53,8 @@ export default function Article({ post }: ArticleProps) {
       <Head title={post.title} description={post.description} imagePath={getTwitterImagePath(post)} type='article' />
       <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div className="relative aspect-video mb-4">
-          {post.image && (
-            <>
-              <PostBanner post={post} />
-              <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 rounded-lg" />
-            </>
-          )}
+          <PostBanner post={post} />
+          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 rounded-lg" />
           <Heading level={1} className="text-white absolute bottom-4 left-4 right-4">
             {post.title}
           </Heading>
@@ -110,7 +106,7 @@ export default function Article({ post }: ArticleProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getPosts();
+  const posts = await getPosts();
 
   const paths = posts.map((post) => ({
     params: {
@@ -127,7 +123,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ArticleProps> = async ({
   params,
 }) => {
-  const post = getPostBySlug(params?.slug as string);
+  const post = await getPostBySlug(params?.slug as string);
 
   return {
     props: {
