@@ -1,4 +1,5 @@
 import { Head } from "@/components/head";
+import getAuthorPhotoPath from "@/helpers/get-author-photo-path";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiPlayCircle } from "react-icons/fi";
@@ -8,15 +9,13 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center my-10">
       <Head />
       <div className="mb-10">
-        { process.env.NEXT_PUBLIC_SOCIAL_GITHUB && (
           <Image
-            src={`${process.env.NEXT_PUBLIC_SOCIAL_GITHUB}.png`}
+            src={getAuthorPhotoPath('profile')}
             width={160}
             height={160}
-            alt="Technology"
+            alt="Author photo"
             className="rounded-full object-cover"
           />
-        ) }
       </div>
       <h1 className="text-4xl font-bold mb-4 text-center">
         <Link

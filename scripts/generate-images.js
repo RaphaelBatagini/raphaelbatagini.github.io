@@ -2,6 +2,8 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
+const request = require("request");
+require("dotenv").config();
 
 const optimizeImage = async (inputPath, outputPath, width, height) => {
   try {
@@ -23,7 +25,7 @@ const getPosts = () => {
   });
 };
 
-async function generateImages() {
+async function generatePostImages() {
   console.log(`Optimizing post images...`);
   const thumbnailsFolder = "public/static/images/posts/thumbnails";
   const bannersFolder = "public/static/images/posts/banners";
@@ -61,12 +63,42 @@ async function generateImages() {
     await optimizeImage(
       `public/static/images/posts/${post.image}`,
       twitterBannerPath,
-      1200,
-      630
+      800,
+      800
     );
   }
 
   console.log(`Post images optimized!`);
 }
 
-generateImages();
+async function generateAuthorImages() {
+  console.log(`Optimizing author images...`);
+  const authorFolder = "public/static/images/author";
+
+  // Create folders if they don't exist
+  if (!fs.existsSync(authorFolder)) {
+    fs.mkdirSync(authorFolder, { recursive: true });
+  }
+
+  // Generate author images from github avatar url
+  const authorImage = await getRemoteImage(`${process.env.NEXT_PUBLIC_SOCIAL_GITHUB}.png`);
+  optimizeImage(authorImage, `${authorFolder}/profile.png`, 160, 160);
+  optimizeImage(authorImage, `${authorFolder}/twitter.png`, 800, 800);
+
+  console.log(`Author images optimized!`);
+}
+
+const getRemoteImage = async (url) => new Promise((resolve, reject) => {
+  // `encoding: null` is important - otherwise you'll get non-buffer response body
+  request({ url, encoding: null }, (e, res, body) => {
+    if (e) { return reject(e); }
+    else if (200 <= res.statusCode && res.statusCode < 300) {
+       return resolve(body);
+    } else {
+      return reject(new Error(`Unexpected response status ${res.statusCode}`));
+    }
+  });
+});
+
+generatePostImages();
+generateAuthorImages();

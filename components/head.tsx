@@ -1,3 +1,4 @@
+import getAuthorPhotoPath from "@/helpers/get-author-photo-path";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -32,9 +33,7 @@ function CustomHead({
     description ?? process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
   const image = imagePath
     ? (process.env.NEXT_PUBLIC_SITE_ROOT ?? "") + imagePath
-    : (process.env.NEXT_PUBLIC_SOCIAL_GITHUB
-    ? `${process.env.NEXT_PUBLIC_SOCIAL_GITHUB}.png`
-    : undefined);
+    : getAuthorPhotoPath('twitter');
 
   const { asPath } = useRouter();
 

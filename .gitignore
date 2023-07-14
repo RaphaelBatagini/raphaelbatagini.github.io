@@ -38,5 +38,8 @@ next-env.d.ts
 
 public/static/images/posts/banners/*
 public/static/images/posts/thumbnails/*
+public/static/images/author/*
 !public/static/images/posts/banners/.gitkeep
 !public/static/images/posts/thumbnails/.gitkeep
+!public/static/images/author/.gitkeep
+
