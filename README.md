@@ -117,7 +117,7 @@ npm run serve
 
 Feel free to customize the blog's design, layout, and functionality as per your requirements. You can modify the styles using Tailwind CSS and customize the components and pages in the `pages` and `components` directories.
 
-To add blog posts, create Markdown files in your designated blog posts repository (`POSTS_REPO`). Each Markdown file should follow the front matter specifications with metadata and content.
+To add blog posts, create Markdown files in your designated blog posts repository (`NEXT_PUBLIC_POSTS_REPO`). Each Markdown file should follow the front matter specifications with metadata and content.
 
 Check out the [personal-blog-posts-template](https://github.com/RaphaelBatagini/personal-blog-posts-template) repository for an example of a blog posts repository structure and Markdown file format.
 
