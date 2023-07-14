@@ -89,9 +89,9 @@ export default function Article({
 }
 
 export async function getStaticPaths() {
-  const articleFiles = fs.readdirSync(path.join('articles'));
+  const posts = await getPosts();
 
-  const totalPosts = articleFiles.length;
+  const totalPosts = posts.length;
   const postsPerPage = 5;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 

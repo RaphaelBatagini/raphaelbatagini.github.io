@@ -68,14 +68,15 @@ NEXT_PUBLIC_LINK_CONTACTS=/contacts
 NEXT_PUBLIC_AUTHOR_NAME=Blog Author
 
 # GitHub Integration
+NEXT_PUBLIC_POSTS_REPO=your-username/my-posts-repo
+
 ACCESS_TOKEN=<your-github-access-token>
-POSTS_REPO=your-username/my-posts-repo
 ```
 
 - Replace `https://your-username.github.io` with the URL where your blog will be hosted.
 - Fill in the appropriate values for site title, description, author information, social links, and navigation links.
 - Specify your GitHub access token, which requires the `repo` scope for reading repository files.
-- Set `POSTS_REPO` to your repository containing the blog posts. If you don't have one, create a new repository to store your blog posts.
+- Set `NEXT_PUBLIC_POSTS_REPO` to your repository containing the blog posts. If you don't have one, create a new repository to store your blog posts using the [personal-blog-posts-template](https://github.com/RaphaelBatagini/personal-blog-posts-template).
 
 ### Step 3: Generate Images
 

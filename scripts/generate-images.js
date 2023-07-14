@@ -7,7 +7,7 @@ require("dotenv").config();
 
 const API_BASE_URL = "https://api.github.com";
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
-const POSTS_REPO = process.env.POSTS_REPO;
+const POSTS_REPO = process.env.NEXT_PUBLIC_POSTS_REPO;
 const IMAGES_FOLDER = "public/static/images";
 const POSTS_FOLDER = "articles";
 
@@ -104,7 +104,6 @@ async function generateAuthorImages() {
 }
 
 const getRemoteImageBuffer = async (imageUrl) => {
-  console.log(`${API_BASE_URL}/repos/${POSTS_REPO}/contents/${imageUrl}`);
   const response = await axios.get(`${API_BASE_URL}/repos/${POSTS_REPO}/contents/${imageUrl}`, {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,

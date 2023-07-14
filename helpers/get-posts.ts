@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const API_BASE_URL = 'https://api.github.com';
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
-const POSTS_REPO = process.env.POSTS_REPO;
+const POSTS_REPO = process.env.NEXT_PUBLIC_POSTS_REPO;
 const POSTS_FOLDER = 'articles';
 
 export const getPosts = async () => {
