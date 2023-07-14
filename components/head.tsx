@@ -30,8 +30,8 @@ function CustomHead({
       <meta name="description" content={descriptionText} />
       <meta property="og:title" content={titleText} />
       <meta property="og:type" content={type} />
-      <meta property="og:image" content={image} />
-      <meta property="og:url" content={asPath} />
+      <meta property="og:image" content={ (process.env.NEXT_PUBLIC_SITE_ROOT ?? '') + image} />
+      <meta property="og:url" content={ (process.env.NEXT_PUBLIC_SITE_ROOT ?? '') + asPath} />
       <meta name="twitter:card" content="summary_large_image"></meta>
 
       {/* Non-Essential, But Recommended */}

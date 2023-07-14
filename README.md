@@ -33,6 +33,8 @@ npm install
 The blog relies on environment variables to provide the necessary configuration. Update the environment variables in your project's environment configuration or `.env` file with the desired values:
 
 ```shell
+NEXT_PUBLIC_SITE_ROOT=https://my-username.github.io
+
 NEXT_PUBLIC_SITE_TITLE=Your Site Title
 NEXT_PUBLIC_SITE_DESCRIPTION=Your site description
 NEXT_PUBLIC_SITE_AUTHOR=Your Name
