@@ -61,8 +61,8 @@ async function generateImages() {
     await optimizeImage(
       `public/static/images/posts/${post.image}`,
       twitterBannerPath,
-      800,
-      800
+      1200,
+      630
     );
   }
 
