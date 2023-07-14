@@ -9,12 +9,16 @@ export default function Navbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href={process.env.NEXT_PUBLIC_LINK_HOME ?? ''} className="text-white text-lg font-bold">
+            <Link href={process.env.NEXT_PUBLIC_LINK_HOME ?? ''} onClick={closeMobileMenu} className="text-white text-lg font-bold">
               { process.env.NEXT_PUBLIC_SITE_TITLE }
             </Link>
           </div>
@@ -50,15 +54,17 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 md:hidden">
           <Link
             href={process.env.NEXT_PUBLIC_LINK_ARTICLES ?? ''}
+            onClick={closeMobileMenu}
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Articles
           </Link>
           <Link
             href={process.env.NEXT_PUBLIC_LINK_CONTACTS ?? ''}
+            onClick={closeMobileMenu}
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Contacts
