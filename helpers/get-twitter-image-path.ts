@@ -1,3 +1,5 @@
-export default function getTwitterImagePath(imageFileName: string) {
-  return `/static/images/posts/banners/${imageFileName.split('.')[0]}-twitter.${imageFileName.split('.')[1]}`;
+import { Post } from "@/definitions";
+
+export default function getTwitterImagePath(post: Post) {
+  return `/static/images/posts/banners/${post.id}-twitter.${post.image.split('.')[1]}`;
 }
