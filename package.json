@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "serve": "npx serve@latest out",
-    "generate-images": "node scripts/generate-images.js"
+    "generate-images": "node scripts/generate-images.js",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@types/node": "20.3.3",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
+    "next-sitemap": "^4.1.8",
     "request": "^2.88.2"
   }
 }
