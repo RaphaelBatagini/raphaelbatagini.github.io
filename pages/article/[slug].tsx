@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Post } from "@/definitions";
 import { slugify } from "@/helpers/slugify";
-import { FiUser, FiCalendar, FiTag } from "react-icons/fi";
+import { FiUser, FiCalendar, FiTag} from "react-icons/fi";
 import { getPostBySlug, getPosts } from "@/helpers/get-posts";
 import { compiler } from "markdown-to-jsx";
 import Heading from "@/components/typography/heading";
@@ -10,6 +10,7 @@ import Code from "@/components/typography/code";
 import { Head } from "@/components/head";
 import PostBanner from "@/components/post-banner";
 import getTwitterImagePath from "@/helpers/get-twitter-image-path";
+import ShareButton from "@/components/social/share-button";
 
 interface ArticleProps {
   post: Post;
@@ -54,10 +55,13 @@ export default function Article({ post }: ArticleProps) {
       <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div className="relative aspect-video mb-4">
           <PostBanner post={post} />
-          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 rounded-lg" />
-          <Heading level={1} className="text-white absolute bottom-4 left-4 right-4">
-            {post.title}
-          </Heading>
+          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 rounded-lg" />
+          <div className="text-white absolute bottom-4 left-4 right-4">
+            <Paragraph className="font-bold" noSpaces>{ post.categories.join(' | ') }</Paragraph>
+            <Heading level={1} noSpaces className="mb-2">
+              {post.title}
+            </Heading>
+          </div>
         </div>
 
         <div className="my-8 flex flex-col sm:flex-row items-start lg:items-center justify-between gap-4">
@@ -78,27 +82,27 @@ export default function Article({ post }: ArticleProps) {
         </div>
 
         <div className="mt-8">
-          <h2 className="text-xl font-bold">Tags:</h2>
-          <div className="flex flex-wrap mt-2">
+          <Heading level={2}>Share this article:</Heading>
+          <div className="flex gap-4 mt-2">
+            <ShareButton url={process.env.NEXT_PUBLIC_SITE_ROOT + '/article/' + post.id} socialNetwork="facebook" />
+            <ShareButton url={process.env.NEXT_PUBLIC_SITE_ROOT + '/article/' + post.id} socialNetwork="twitter" />
+            <ShareButton url={process.env.NEXT_PUBLIC_SITE_ROOT + '/article/' + post.id} socialNetwork="linkedin" />
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-center gap-3">
+          <Heading level={2} noSpaces>Tags:</Heading>
+          <div className="flex items-center">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="mr-2 mb-2 px-3 py-1 bg-gray-200 rounded-lg"
+                className="px-3 py-1 bg-gray-200 rounded-lg"
               >
                 <FiTag className="inline-block mr-1" />
                 {tag}
               </span>
             ))}
           </div>
-        </div>
-
-        <div className="mt-8">
-          <h2 className="text-xl font-bold">Categories:</h2>
-          <ul>
-            {post.categories.map((category) => (
-              <li key={slugify(category)}>{category}</li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
