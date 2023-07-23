@@ -81,6 +81,8 @@ export default function Article({ post }: ArticleProps) {
           {markdown}
         </div>
 
+        <hr className="h-px my-8 bg-gray-300 border-0" />
+
         <div className="mt-8">
           <Heading level={2}>Share this article:</Heading>
           <div className="flex gap-4 mt-2">
