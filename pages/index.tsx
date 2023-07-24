@@ -1,67 +1,60 @@
+import Card from "@/components/card/card";
 import { Head } from "@/components/head";
+import RecentArticlesCarousel from "@/components/carousel/recent-articles-carousel";
+import Heading from "@/components/typography/heading";
+import Paragraph from "@/components/typography/paragraph";
+import { Post } from "@/definitions";
 import getAuthorPhotoPath from "@/helpers/get-author-photo-path";
+import { getPosts } from "@/helpers/get-posts";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiPlayCircle } from "react-icons/fi";
 
-export default function Home() {
+export default function Home({ posts }: { posts: Post[] }) {
   return (
     <div className="flex flex-col items-center justify-center my-10">
       <Head />
-      <div className="mb-10">
-          <Image
-            src={getAuthorPhotoPath('profile')}
-            width={160}
-            height={160}
-            alt="Author photo"
-            className="rounded-full object-cover"
-          />
-      </div>
-      <h1 className="text-4xl font-bold mb-4 text-center">
-        <Link
-          href={process.env.NEXT_PUBLIC_LINK_HOME ?? "/"}
-          className="text-lg font-bold"
-        >
-          {process.env.NEXT_PUBLIC_SITE_TITLE}
-        </Link>
-      </h1>
-      <p className="text-lg text-gray-600 mb-8 text-center">
+      <Image
+        src={getAuthorPhotoPath('profile')}
+        width={160}
+        height={160}
+        alt="Author photo"
+        className="rounded-full object-cover"
+      />
+      <Heading level={1}>
+        {process.env.NEXT_PUBLIC_SITE_TITLE}
+      </Heading>
+      <Paragraph noSpaces className="mb-10">
         {process.env.NEXT_PUBLIC_SITE_DESCRIPTION}
-      </p>
+      </Paragraph>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">
-            Explore, Learn, and Innovate
-          </h2>
-          <p className="text-gray-600">
-            {
-              "Join me on an exciting journey through the world of software engineering. As an experienced Software Engineer and Technical Lead, I'm dedicated to pushing the boundaries of technology and solving complex problems. Together, let's delve into the latest trends and advancements in the industry."
-            }
-          </p>
-        </div>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <Card>
+          <Heading level={2} noSpaces>
+            Explore the Latest Technologies and Trends
+          </Heading>
+          <Paragraph align="justify">
+            Stay up to date with the ever-evolving technology landscape. Discover the latest advancements in programming languages, frameworks, cloud computing, artificial intelligence, and more. Explore the transformative potential of emerging technologies such as blockchain, Internet of Things (IoT), and augmented reality. Learn about industry trends, best practices, and real-world use cases from experts in the field. Whether you're a seasoned developer or just starting your coding journey, our platform provides valuable insights and resources to keep you at the forefront of technology innovation.
+          </Paragraph>
+        </Card>
 
-        <div className="bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">
-            Discover Inspiring Content
-          </h2>
-          <p className="text-gray-600">
-            {
-              "Dive into my blog and YouTube channel, where I share valuable insights, tutorials, and best practices. Whether you're a beginner or a seasoned professional, you'll find a wealth of resources to enhance your technical skills. Stay ahead of the game with practical tips and keep up with the ever-evolving technology landscape."
-            }
-          </p>
-        </div>
+        <Card>
+          <Heading level={2} noSpaces>
+            Learn from Industry Experts and Thought Leaders
+          </Heading>
+          <Paragraph align="justify">
+            Gain knowledge and inspiration from renowned developers, architects, and technology influencers. Dive into their personal stories, career journeys, and valuable lessons learned along the way. Explore their technical expertise, innovative projects, and contributions to the tech community. Our platform brings you exclusive interviews, articles, and podcasts featuring industry experts who share their insights, tips, and strategies for success. Learn from the best and discover new perspectives that will fuel your professional growth and help you navigate the ever-changing world of technology.
+          </Paragraph>
+        </Card>
 
-        <div className="bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">
-            Embark on Your Learning Journey
-          </h2>
-          <p className="text-gray-600">
-            {
-              "Are you ready to take your skills to the next level? Let's connect and explore the limitless possibilities of software engineering. Contact me today, and let's embark on this exciting learning journey together."
-            }
-          </p>
-        </div>
+        <Card>
+          <Heading level={2} noSpaces>
+            Enhance Your Skills with Practical Tutorials and Guides
+          </Heading>
+          <Paragraph align="justify">
+            Unlock your full potential as a developer with hands-on tutorials and comprehensive guides. Learn step-by-step how to build web applications, mobile apps, APIs, and more using the latest technologies and frameworks. Dive into frontend development with HTML, CSS, and JavaScript, and explore advanced frontend libraries such as React and Vue.js. Master backend technologies like Node.js, Python, and Java to build scalable and secure server-side applications. Our tutorials cover a wide range of topics, from database management to DevOps practices, empowering you to become a well-rounded and versatile developer.
+          </Paragraph>
+        </Card>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 mt-8">
@@ -80,6 +73,22 @@ export default function Home() {
           <FiPlayCircle className="mr-2" /> Watch My Videos
         </a>
       </div>
+
+      <RecentArticlesCarousel posts={posts}/>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await getPosts();
+
+  const sortedPosts = posts.sort(
+    (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  );
+
+  return {
+    props: {
+      posts: sortedPosts.slice(0, 4),
+    },
+  };
 }

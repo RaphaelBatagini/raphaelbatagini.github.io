@@ -7,7 +7,8 @@ const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const POSTS_REPO = process.env.NEXT_PUBLIC_POSTS_REPO;
 const POSTS_FOLDER = 'articles';
 
-export const getPosts = async () => {
+
+export const getPosts = async (): Promise<Post[]> => {
   const response = await axios.get(`${API_BASE_URL}/repos/${POSTS_REPO}/contents/${POSTS_FOLDER}`, {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,

@@ -2,11 +2,13 @@ import React from "react";
 
 export default function Heading({
   level,
+  align = "left",
   noSpaces = false,
   children,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & {
   level: number;
+  align?: "left" | "center" | "right";
   noSpaces?: boolean;
   children: React.ReactNode;
 }) {
@@ -17,6 +19,12 @@ export default function Heading({
 
   if (!noSpaces) {
     props.className += ' mt-6 mb-2';
+  }
+
+  if (align === 'center') {
+    props.className += ' text-center';
+  } else if (align === 'right') {
+    props.className += ' text-right';
   }
 
   switch (level) {

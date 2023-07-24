@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Post } from "@/definitions";
-import { slugify } from "@/helpers/slugify";
 import { FiUser, FiCalendar, FiTag} from "react-icons/fi";
 import { getPostBySlug, getPosts } from "@/helpers/get-posts";
 import { compiler } from "markdown-to-jsx";
@@ -9,7 +8,7 @@ import Paragraph from "@/components/typography/paragraph";
 import Code from "@/components/typography/code";
 import { Head } from "@/components/head";
 import PostBanner from "@/components/post-banner";
-import getTwitterImagePath from "@/helpers/get-twitter-image-path";
+import getPostImagePath from "@/helpers/get-post-image-path";
 import ShareButton from "@/components/social/share-button";
 
 interface ArticleProps {
@@ -51,13 +50,13 @@ export default function Article({ post }: ArticleProps) {
 
   return (
     <div className="grid grid-cols-12 my-4">
-      <Head title={post.title} description={post.description} imagePath={getTwitterImagePath(post)} type='article' />
+      <Head title={post.title} description={post.description} imagePath={getPostImagePath(post, 'banner')} type='article' />
       <div className="col-span-12 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div className="relative aspect-video mb-4">
           <PostBanner post={post} />
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 rounded-lg" />
           <div className="text-white absolute bottom-4 left-4 right-4">
-            <Paragraph className="font-bold" noSpaces>{ post.categories.join(' | ') }</Paragraph>
+            <Paragraph className="font-bold text-white" noSpaces>{ post.categories.join(' | ') }</Paragraph>
             <Heading level={1} noSpaces className="mb-2">
               {post.title}
             </Heading>
