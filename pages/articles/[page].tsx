@@ -1,7 +1,6 @@
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import PostCard from "@/components/card/post/post-card";
 import { Post } from "@/definitions";
 import { getPosts } from "@/helpers/get-posts";
 import { Head } from "@/components/head";
