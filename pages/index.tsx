@@ -34,7 +34,7 @@ export default function Home({ posts }: { posts: Post[] }) {
             Explore the Latest Technologies and Trends
           </Heading>
           <Paragraph align="justify">
-            Stay up to date with the ever-evolving technology landscape. Discover the latest advancements in programming languages, frameworks, cloud computing, artificial intelligence, and more. Explore the transformative potential of emerging technologies such as blockchain, Internet of Things (IoT), and augmented reality. Learn about industry trends, best practices, and real-world use cases from experts in the field. Whether you're a seasoned developer or just starting your coding journey, our platform provides valuable insights and resources to keep you at the forefront of technology innovation.
+            { "Stay up to date with the ever-evolving technology landscape. Discover the latest advancements in programming languages, frameworks, cloud computing, artificial intelligence, and more. Explore the transformative potential of emerging technologies such as blockchain, Internet of Things (IoT), and augmented reality. Learn about industry trends, best practices, and real-world use cases from experts in the field. Whether you're a seasoned developer or just starting your coding journey, our platform provides valuable insights and resources to keep you at the forefront of technology innovation." }
           </Paragraph>
         </Card>
 
@@ -43,7 +43,7 @@ export default function Home({ posts }: { posts: Post[] }) {
             Learn from Industry Experts and Thought Leaders
           </Heading>
           <Paragraph align="justify">
-            Gain knowledge and inspiration from renowned developers, architects, and technology influencers. Dive into their personal stories, career journeys, and valuable lessons learned along the way. Explore their technical expertise, innovative projects, and contributions to the tech community. Our platform brings you exclusive interviews, articles, and podcasts featuring industry experts who share their insights, tips, and strategies for success. Learn from the best and discover new perspectives that will fuel your professional growth and help you navigate the ever-changing world of technology.
+            { "Gain knowledge and inspiration from renowned developers, architects, and technology influencers. Dive into their personal stories, career journeys, and valuable lessons learned along the way. Explore their technical expertise, innovative projects, and contributions to the tech community. Our platform brings you exclusive interviews, articles, and podcasts featuring industry experts who share their insights, tips, and strategies for success. Learn from the best and discover new perspectives that will fuel your professional growth and help you navigate the ever-changing world of technology." }
           </Paragraph>
         </Card>
 
@@ -52,7 +52,7 @@ export default function Home({ posts }: { posts: Post[] }) {
             Enhance Your Skills with Practical Tutorials and Guides
           </Heading>
           <Paragraph align="justify">
-            Unlock your full potential as a developer with hands-on tutorials and comprehensive guides. Learn step-by-step how to build web applications, mobile apps, APIs, and more using the latest technologies and frameworks. Dive into frontend development with HTML, CSS, and JavaScript, and explore advanced frontend libraries such as React and Vue.js. Master backend technologies like Node.js, Python, and Java to build scalable and secure server-side applications. Our tutorials cover a wide range of topics, from database management to DevOps practices, empowering you to become a well-rounded and versatile developer.
+            { "Unlock your full potential as a developer with hands-on tutorials and comprehensive guides. Learn step-by-step how to build web applications, mobile apps, APIs, and more using the latest technologies and frameworks. Dive into frontend development with HTML, CSS, and JavaScript, and explore advanced frontend libraries such as React and Vue.js. Master backend technologies like Node.js, Python, and Java to build scalable and secure server-side applications. Our tutorials cover a wide range of topics, from database management to DevOps practices, empowering you to become a well-rounded and versatile developer." }
           </Paragraph>
         </Card>
       </div>
