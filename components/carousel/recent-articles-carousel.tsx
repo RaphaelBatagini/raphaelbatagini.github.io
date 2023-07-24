@@ -13,7 +13,7 @@ export default function RecentArticlesCarousel({ posts }: { posts: Post[] }) {
 
       <div className="flex flex-col md:flex-row gap-4 justify-center pb-4">
         {posts.map((post) => (
-          <PostCardVertical key={post.id} post={post} />
+          <PostCardVertical key={post.id} post={post} className="w-full md:w-1/2 lg:w-1/4" />
         ))}
       </div>
 
