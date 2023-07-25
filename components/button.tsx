@@ -4,9 +4,8 @@ export default function Button({
   children,
   color,
   url,
-  target = "_self",
-  rel,
   className,
+  externalUrl = false,
 }: {
   children: any;
   color: string;
@@ -14,10 +13,18 @@ export default function Button({
   target?: string;
   rel?: string;
   className?: string;
+  externalUrl?: boolean;
 }) {
   const classes = `inline-flex items-center justify-center bg-${color}-800 hover:bg-${color}-900 text-white text-lg font-medium px-6 py-3 rounded-lg ${className}`;
+  
+  if (externalUrl) return (
+    <a href={url} target="_blank" rel="noopener noreferrer" className={classes}>
+      {children}
+    </a>
+  );
+  
   return (
-    <Link href={url} target={target} rel={rel} className={classes}>
+    <Link href={url} className={classes}>
       {children}
     </Link>
   );
