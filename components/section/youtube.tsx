@@ -11,7 +11,7 @@ export default function YoutubeSection() {
           <FiYoutube className="inline-block text-4xl" />
           <Heading level={2}>Welcome to My YouTube Channel</Heading>
           <Paragraph>
-            Join me on my YouTube journey, where I share valuable insights, tutorials, and best practices on various topics related to technology, programming, engineering, and architecture. Whether you're a beginner or a seasoned professional, you'll find a wealth of resources to enhance your skills and knowledge in these fields. Stay up to date with the latest trends and advancements in the industry and never miss a video!
+            { "Join me on my YouTube journey, where I share valuable insights, tutorials, and best practices on various topics related to technology, programming, engineering, and architecture. Whether you're a beginner or a seasoned professional, you'll find a wealth of resources to enhance your skills and knowledge in these fields. Stay up to date with the latest trends and advancements in the industry and never miss a video!"}
           </Paragraph>
           <Button url={process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE!} color="red" externalUrl className="mt-4">
             Subscribe to My Channel
