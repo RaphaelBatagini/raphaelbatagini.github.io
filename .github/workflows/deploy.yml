@@ -69,7 +69,7 @@ jobs:
       - name: SEO Validation
         id: seo-validation
         run: |
-          npm run seo-validation
+          npm run validate-seo
 
       - name: Create Artifact from SEO Validation Results
         if: success() || failure()
