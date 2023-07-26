@@ -8,6 +8,8 @@ This is a static blog template built with Next.js, featuring articles written in
 - GitHub integration for easy deployment
 - Customizable design using Tailwind CSS
 - Automatic image generation for post thumbnails and banners
+- Automatic sitemap generation
+- SEO evaluation of the HTMLs generated
 - Dynamic author information from GitHub profile
 
 ## Getting Started
@@ -112,8 +114,60 @@ You can also serve it locally with the following command:
 ```
 npm run serve
 ```
+### Step 6: Utilities:
+#### SEO Report
+Get an SEO evaluation of your website running the following command:
+```
+npm run validate-seo
+```
+It also runs at the end of the deploy pipeline.
 
-### Step 6: Customize and Add Blog Posts
+The output will be something like this:
+```
+npm run validate-seo
+
+> personal-blog@0.1.0 validate-seo
+> node scripts/seo-validation/validate.js
+
+SEO validation failed. See the table below for details:
+
+1. out/404.html
+┌─────────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ (index) │         rule         │                                     message                                      │
+├─────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│    0    │ 'DESCRIPTION_LENGTH' │ 'Description length should be between 50 and 160 characters. Current length: 46' │
+└─────────┴──────────────────────┴──────────────────────────────────────────────────────────────────────────────────┘
+
+2. out/article/test-post.html
+┌─────────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ (index) │         rule         │                                     message                                      │
+├─────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│    0    │ 'DESCRIPTION_LENGTH' │ 'Description length should be between 50 and 160 characters. Current length: 34' │
+└─────────┴──────────────────────┴──────────────────────────────────────────────────────────────────────────────────┘
+
+3. out/articles/1.html
+┌─────────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ (index) │         rule         │                                     message                                      │
+├─────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│    0    │ 'DESCRIPTION_LENGTH' │ 'Description length should be between 50 and 160 characters. Current length: 17' │
+└─────────┴──────────────────────┴──────────────────────────────────────────────────────────────────────────────────┘
+
+4. out/contacts.html
+┌─────────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ (index) │         rule         │                                     message                                      │
+├─────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│    0    │ 'DESCRIPTION_LENGTH' │ 'Description length should be between 50 and 160 characters. Current length: 20' │
+└─────────┴──────────────────────┴──────────────────────────────────────────────────────────────────────────────────┘
+
+5. out/index.html
+┌─────────┬──────────────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+│ (index) │         rule         │                                     message                                      │
+├─────────┼──────────────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+│    0    │ 'DESCRIPTION_LENGTH' │ 'Description length should be between 50 and 160 characters. Current length: 40' │
+└─────────┴──────────────────────┴──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Step 7: Customize and Add Blog Posts
 
 Feel free to customize the blog's design, layout, and functionality as per your requirements. You can modify the styles using Tailwind CSS and customize the components and pages in the `pages` and `components` directories.
 
@@ -121,7 +175,7 @@ To add blog posts, create Markdown files in your designated blog posts repositor
 
 Check out the [personal-blog-posts-template](https://github.com/RaphaelBatagini/personal-blog-posts-template) repository for an example of a blog posts repository structure and Markdown file format.
 
-### Step 7: Build and Deploy
+### Step 8: Build and Deploy
 
 When you're ready to deploy your blog, follow these steps:
 

@@ -50,32 +50,25 @@ function findAllHTMLFiles(dir) {
 function validateAllHTMLs(dir) {
   try {
     const htmlFiles = findAllHTMLFiles(dir);
-
-    if (!fs.existsSync(logFolder)) {
-      fs.mkdirSync(logFolder);
-    }
-
-    const logFilePath = path.join(logFolder, logFileName);
-    fs.writeFileSync(logFilePath, '');
-
-    let hasErrors = false;
+    const seoValidationResults = [];
 
     for (const filePath of htmlFiles) {
       const errors = validateSEO(filePath);
 
       if (errors.length > 0) {
-        hasErrors = true;
-        fs.appendFileSync(logFilePath, `SEO issues found in ${filePath}:\n`);
-        errors.forEach((error) => {
-          fs.appendFileSync(logFilePath, `  - ${error.rule}: ${error.message}\n`);
+        seoValidationResults.push({
+          filePath,
+          errors,
         });
-        fs.appendFileSync(logFilePath, '\n');
       }
     }
 
-    if (hasErrors) {
-      console.log(chalk.red('SEO validation failed. Check the log file for details.'));
-      process.exit(1);
+    if (seoValidationResults.length > 0) {
+      console.log(chalk.red('SEO validation failed. See the table below for details:'));
+      for (let i = 0; i < seoValidationResults.length; i++) {
+        console.log(chalk.red(`\n${i + 1}. ${seoValidationResults[i].filePath}`));
+        console.table(seoValidationResults[i].errors);
+      }
     } else {
       console.log(chalk.green('SEO validation passed for all files.'));
     }

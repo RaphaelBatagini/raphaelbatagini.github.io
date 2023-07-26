@@ -70,10 +70,3 @@ jobs:
         id: seo-validation
         run: |
           npm run validate-seo
-
-      - name: Create Artifact from SEO Validation Results
-        if: success() || failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: seo-validation-log
-          path: ./seo-logs/seo-validation.log
