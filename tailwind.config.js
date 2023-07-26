@@ -1,17 +1,10 @@
-const colors = require('tailwindcss/colors')
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './out/**/*.html',
-    './pages/**/*.{tsx}',
-    './components/**/*.{tsx}',
-  ],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './out/**/*.html',
   ],
   theme: {
     extend: {

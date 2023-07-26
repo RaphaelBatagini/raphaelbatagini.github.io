@@ -1,7 +1,7 @@
-import "../pages/globals.css";
+// import "../pages/globals.css";
+import "../pages/build.css";
 import Layout from "../components/layout";
 import { Fragment } from "react";
-import { Head } from "@/components/head";
 
 export default function MyApp({
   Component,
