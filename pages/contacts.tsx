@@ -8,7 +8,7 @@ import CommonLink from '@/components/link';
 export default function Contacts() {
   return (
     <div className="flex flex-col items-center my-10">
-      <Head title="Contacts and Social Networks" description="Get in touch with me" />
+      <Head title="Contacts and Social Networks" description="Get in touch with me or access one of my social networks" />
       <Heading level={1}>Contacts and Social Networks</Heading>
       <Paragraph>
         Feel free to reach out to me on social media or through the contact information provided below:
