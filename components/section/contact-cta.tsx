@@ -18,7 +18,7 @@ const ContactCtaSection = () => {
             <Button
               url={process.env.NEXT_PUBLIC_LINK_CONTACTS!}
               color="blue"
-              className="mt-5 px-36"
+              className="mt-5 px-12 lg:px-36"
             >Contact Me</Button>
           </div>
         </div>
