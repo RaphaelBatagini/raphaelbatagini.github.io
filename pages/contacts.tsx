@@ -1,44 +1,39 @@
 import { FaLinkedin, FaGithub, FaYoutube, FaTwitter } from 'react-icons/fa';
-import Link from 'next/link';
 import { Head } from '@/components/head';
+import Heading from '@/components/typography/heading';
+import Paragraph from '@/components/typography/paragraph';
+import Button from '@/components/button';
+import CommonLink from '@/components/link';
 
 export default function Contacts() {
   return (
     <div className="flex flex-col items-center my-10">
-      <Head title="Contacts" description="Get in touch with me" />
-      <h1 className="text-3xl font-bold mb-4">Contact Me</h1>
-      <p className="text-gray-600 mb-6">
+      <Head title="Contacts and Social Networks" description="Get in touch with me" />
+      <Heading level={1}>Contacts and Social Networks</Heading>
+      <Paragraph>
         Feel free to reach out to me on social media or through the contact information provided below:
-      </p>
+      </Paragraph>
       <div className="flex flex-col space-y-4 w-full lg:w-96">
-        <a href={ process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN } target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-blue-800 hover:bg-blue-900 text-white text-lg font-medium py-3 rounded-lg">
+        <Button url={process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN!} color="blue" externalUrl>
             <FaLinkedin className="mr-3" />
             Connect with me on LinkedIn
-          </button>
-        </a>
-        <a href={ process.env.NEXT_PUBLIC_SOCIAL_GITHUB } target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium py-3 rounded-lg">
+        </Button>
+        <Button url={process.env.NEXT_PUBLIC_SOCIAL_GITHUB!} color="gray" externalUrl>
             <FaGithub className="mr-3" />
             Check out my GitHub repositories
-          </button>
-        </a>
-        <a href={ process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE } target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-red-800 hover:bg-red-900 text-white text-lg font-medium py-3 rounded-lg">
+        </Button>
+        <Button url={ process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE! } color="red" externalUrl>
             <FaYoutube className="mr-3" />
             Subscribe to my YouTube channel
-          </button>
-        </a>
-        <a href={ process.env.NEXT_PUBLIC_SOCIAL_TWITTER } target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center justify-center w-full bg-cyan-800 hover:bg-cyan-900 text-white text-lg font-medium py-3 rounded-lg">
+        </Button>
+        <Button url={ process.env.NEXT_PUBLIC_SOCIAL_TWITTER! } color="cyan" externalUrl>
             <FaTwitter className="mr-3" />
             Follow me on Twitter
-          </button>
-        </a>
+        </Button>
       </div>
-      <p className="text-gray-600 mt-6">
-        For any other inquiries or to get in touch, you can also reach me via email at <Link className='text-blue-500 hover:text-blue-600' href={`mailto:${process.env.NEXT_PUBLIC_SITE_EMAIL}`}>{process.env.NEXT_PUBLIC_SITE_EMAIL}</Link>.
-      </p>
+      <Paragraph>
+        For any other inquiries or to get in touch, you can also reach me via email at <CommonLink href={`mailto:${process.env.NEXT_PUBLIC_SITE_EMAIL}`}>{process.env.NEXT_PUBLIC_SITE_EMAIL}</CommonLink>.
+      </Paragraph>
     </div>
   );
 }

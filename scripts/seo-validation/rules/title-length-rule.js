@@ -6,17 +6,18 @@ class TitleLengthRule extends BaseSeoRule {
       "TITLE_LENGTH",
       "head > title",
     );
+    this.currentTitleLength = 0;
   }
 
   getErrorMessage() {
-    return "Title length should be between 10 and 70 characters.";
+    return `Title length should be between 10 and 70 characters. Current length: ${this.currentTitleLength}`;
   }
 
   isValid($) {
     const $element = $(this.selector);
     const title = $element.text().trim();
-    const length = title.length;
-    return length > 10 && length < 70;
+    this.currentTitleLength = title.length;
+    return this.currentTitleLength > 10 && this.currentTitleLength < 70;
   }
 }
 

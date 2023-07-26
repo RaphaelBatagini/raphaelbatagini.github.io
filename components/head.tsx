@@ -27,8 +27,7 @@ function CustomHead({
     | "music.playlist"
     | "music.radio_station";
 }) {
-  const titleText =
-    process.env.NEXT_PUBLIC_SITE_TITLE + (title ? ` - ${title}` : "");
+  const titleText = title ?? process.env.NEXT_PUBLIC_SITE_TITLE;
   const descriptionText =
     description ?? process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
   const image = imagePath
