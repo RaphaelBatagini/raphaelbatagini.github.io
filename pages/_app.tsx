@@ -1,5 +1,4 @@
-// import "../pages/globals.css";
-import "../pages/build.css";
+import "@/pages/globals.css";
 import Layout from "../components/layout";
 import { Fragment } from "react";
 

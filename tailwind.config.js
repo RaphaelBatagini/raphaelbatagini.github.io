@@ -4,7 +4,14 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './out/**/*.html',
+  ],
+  safelist: [
+    'bg-red-800',
+    'hover:bg-red-900',
+    'bg-blue-800',
+    'hover:bg-blue-900',
+    'bg-cyan-800',
+    'hover:bg-cyan-900',
   ],
   theme: {
     extend: {
