@@ -1,6 +1,14 @@
 import { FiFacebook, FiLinkedin, FiTwitter } from "react-icons/fi";
+import CommonLink from "../link";
+import Button from "../button";
 
-export default function ShareButton({ url, socialNetwork }: { url: string, socialNetwork: 'facebook' | 'twitter' | 'linkedin' }) {
+export default function ShareButton({
+  url,
+  socialNetwork,
+}: {
+  url: string;
+  socialNetwork: "facebook" | "twitter" | "linkedin";
+}) {
   const shareUrl = encodeURIComponent(url);
   const socialNetworks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
@@ -14,8 +22,12 @@ export default function ShareButton({ url, socialNetwork }: { url: string, socia
   };
 
   return (
-    <a href={socialNetworks[socialNetwork]} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white text-lg font-medium p-3 rounded-full">
+    <Button
+      url={socialNetworks[socialNetwork]}
+      externalUrl
+      color="gray"
+    >
       {socialIcon[socialNetwork]}
-    </a>
+    </Button>
   );
 }

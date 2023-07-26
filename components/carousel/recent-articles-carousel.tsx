@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { Post } from "@/definitions";
 import PostCardVertical from "@/components/card/post/post-card-vertical";
 import Heading from "@/components/typography/heading";
 import Paragraph from "../typography/paragraph";
+import Button from "../button";
 
 export default function RecentArticlesCarousel({ posts }: { posts: Post[] }) {
   if (!posts) return null;
@@ -24,12 +24,9 @@ export default function RecentArticlesCarousel({ posts }: { posts: Post[] }) {
       </div>
 
       <div className="text-center mt-4">
-        <Link
-          href={process.env.NEXT_PUBLIC_LINK_ARTICLES ?? ""}
-          className="inline-flex items-center justify-center bg-blue-800 hover:bg-blue-900 text-white text-lg font-medium px-6 py-3 rounded-lg"
-        >
+        <Button url={process.env.NEXT_PUBLIC_LINK_ARTICLES ?? ""} color="blue">
           See all articles
-        </Link>
+        </Button>
       </div>
     </section>
   );
