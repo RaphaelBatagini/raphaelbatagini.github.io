@@ -1,6 +1,5 @@
 const sharp = require("sharp");
 const fs = require("fs");
-const path = require("path");
 const matter = require("gray-matter");
 const axios = require("axios");
 require("dotenv").config();

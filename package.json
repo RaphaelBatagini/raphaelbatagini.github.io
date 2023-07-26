@@ -9,7 +9,8 @@
     "lint": "next lint",
     "serve": "npx serve@latest out",
     "generate-images": "node scripts/generate-images.js",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "validate-seo": "node scripts/seo-validation/validate.js"
   },
   "dependencies": {
     "@types/node": "20.3.3",
@@ -17,11 +18,15 @@
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
+    "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "markdown-to-jsx": "^7.2.1",
     "next": "13.4.7",
+    "path": "^0.12.7",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

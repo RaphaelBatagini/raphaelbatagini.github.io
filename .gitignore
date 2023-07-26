@@ -43,3 +43,6 @@ public/static/images/author/*
 !public/static/images/posts/thumbnails/.gitkeep
 !public/static/images/author/.gitkeep
 
+seo-logs/*
+!seo-logs/.gitkeep
+
