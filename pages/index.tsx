@@ -8,6 +8,7 @@ import getAuthorPhotoPath from "@/helpers/get-author-photo-path";
 import { getPosts } from "@/helpers/get-posts";
 import Image from "next/image";
 import YoutubeSection from "@/components/section/youtube";
+import ContactCtaSection from "@/components/section/contact-cta";
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (
@@ -58,6 +59,7 @@ export default function Home({ posts }: { posts: Post[] }) {
 
       <YoutubeSection />
       <RecentArticlesCarousel posts={posts}/>
+      <ContactCtaSection />
     </div>
   );
 }
