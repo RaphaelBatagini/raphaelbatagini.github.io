@@ -3,6 +3,7 @@ import PostThumbnail from "./post-thumbnail";
 import Button from "@/components/button";
 import Paragraph from "@/components/typography/paragraph";
 import Heading from "@/components/typography/heading";
+import PostTag from "@/components/post-tag";
 
 export default function PostCardVertical({
   post,
@@ -33,16 +34,6 @@ export default function PostCardVertical({
               .substring(0, 120)}
             ...
           </Paragraph>
-          <ul className="flex flex-wrap space-x-2 mb-2">
-            {post.tags.map((tag) => (
-              <li
-                key={tag}
-                className="bg-gray-200 rounded-full px-3 py-1 text-sm"
-              >
-                #{tag}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
       <div className="flex flex-col flex-grow">

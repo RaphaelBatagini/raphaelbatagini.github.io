@@ -10,6 +10,7 @@ import { Head } from "@/components/head";
 import PostBanner from "@/components/post-banner";
 import getPostImagePath from "@/helpers/get-post-image-path";
 import ShareButton from "@/components/social/share-button";
+import PostTag from "@/components/post-tag";
 
 interface ArticleProps {
   post: Post;
@@ -95,13 +96,7 @@ export default function Article({ post }: ArticleProps) {
           <Heading level={2} noSpaces>Tags:</Heading>
           <div className="flex items-center">
             {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 bg-gray-200 rounded-lg"
-              >
-                <FiTag className="inline-block mr-1" />
-                {tag}
-              </span>
+              <PostTag tag={tag} key={tag} />
             ))}
           </div>
         </div>
