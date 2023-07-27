@@ -10,9 +10,9 @@ const ContactCtaSection = () => {
         <div className="text-center">
           <Heading level={2}>Connect With Me</Heading>
           <Paragraph>
-            Feel free to get in touch with me or connect on my social networks to stay updated.
+            {"Feel free to get in touch with me or connect on my social networks to stay updated."}
             <br/>
-            I'd love to hear from you!
+            {"I'd love to hear from you!"}
           </Paragraph>
           <div className="flex justify-center">
             <Button

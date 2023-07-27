@@ -57,7 +57,7 @@ export default function Article({ post }: ArticleProps) {
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 rounded-lg" />
           <div className="text-white absolute bottom-4 left-4 right-4">
             <Paragraph className="font-bold text-white" noSpaces>{ post.categories.join(' | ') }</Paragraph>
-            <Heading level={1} noSpaces className="mb-2">
+            <Heading level={1} noSpaces color="white" className="mb-2">
               {post.title}
             </Heading>
           </div>

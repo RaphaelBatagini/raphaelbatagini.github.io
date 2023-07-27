@@ -8,7 +8,7 @@ export default function YoutubeSection() {
     <section className="pt-12 pb-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <FiYoutube className="inline-block text-4xl" />
+          <FiYoutube className="inline-block text-4xl text-gray-800" />
           <Heading level={2}>Welcome to My YouTube Channel</Heading>
           <Paragraph>
             { "Join me on my YouTube journey, where I share valuable insights, tutorials, and best practices on various topics related to technology, programming, engineering, and architecture. Whether you're a beginner or a seasoned professional, you'll find a wealth of resources to enhance your skills and knowledge in these fields. Stay up to date with the latest trends and advancements in the industry and never miss a video!"}

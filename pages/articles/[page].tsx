@@ -44,7 +44,7 @@ export default function Article({
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {posts.map((post) => (
-          <PostCardVertical key={post.id} post={post} />
+          <PostCardVertical key={post.id} post={post} titleHeadingLevel={2}/>
         ))}
       </div>
 

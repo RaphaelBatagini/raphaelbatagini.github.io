@@ -2,20 +2,24 @@ import React from "react";
 
 export default function Heading({
   level,
+  levelSize,
   align = "left",
   noSpaces = false,
   children,
+  color = "gray-800",
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & {
   level: number;
+  levelSize?: number;
   align?: "left" | "center" | "right";
   noSpaces?: boolean;
+  color?: string;
   children: React.ReactNode;
 }) {
   const HeadingTag = `h${level}`;
 
   props.className = props.className ?? '';
-  props.className += ' font-bold';
+  props.className += ` font-bold text-${color}`;
 
   if (!noSpaces) {
     props.className += ' mt-6 mb-2';
@@ -27,7 +31,9 @@ export default function Heading({
     props.className += ' text-right';
   }
 
-  switch (level) {
+  const size = levelSize ?? level;
+
+  switch (size) {
     case 1:
       props.className += ' text-4xl';
       break;

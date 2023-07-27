@@ -1,8 +1,18 @@
 import { Post } from "@/definitions";
 import PostThumbnail from "./post-thumbnail";
 import Button from "@/components/button";
+import Paragraph from "@/components/typography/paragraph";
+import Heading from "@/components/typography/heading";
 
-export default function PostCardVertical({ post, className }: { post: Post, className?: string }) {
+export default function PostCardVertical({
+  post,
+  className,
+  titleHeadingLevel,
+}: {
+  post: Post;
+  className?: string;
+  titleHeadingLevel?: number;
+}) {
   return (
     <div
       key={post.id}
@@ -11,13 +21,18 @@ export default function PostCardVertical({ post, className }: { post: Post, clas
       <PostThumbnail post={post} className="rounded-lg mb-4" />
       <div className="flex flex-col">
         <div className="flex-grow flex flex-col">
-          <p className="font-bold text-gray-950">{post.categories?.[0]}</p>
-          <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-          <p className="mb-2">
+          <Paragraph noSpaces className="text-gray-800 font-bold">
+            {post.categories?.[0]}
+          </Paragraph>
+          <Heading level={titleHeadingLevel ?? 3} levelSize={3} noSpaces>
+            {post.title}
+          </Heading>
+          <Paragraph>
             {(post.description || post.content)
               .replace(/(<([^>]+)>)/gi, "")
-              .substring(0, 120)}...
-          </p>
+              .substring(0, 120)}
+            ...
+          </Paragraph>
           <ul className="flex flex-wrap space-x-2 mb-2">
             {post.tags.map((tag) => (
               <li
@@ -32,7 +47,13 @@ export default function PostCardVertical({ post, className }: { post: Post, clas
       </div>
       <div className="flex flex-col flex-grow">
         <div className="mt-auto">
-          <Button color="gray" url={`/article/${post.id}`} className="w-full mt-3">Read more</Button>
+          <Button
+            color="gray"
+            url={`/article/${post.id}`}
+            className="w-full mt-3"
+          >
+            Read more
+          </Button>
         </div>
       </div>
     </div>
