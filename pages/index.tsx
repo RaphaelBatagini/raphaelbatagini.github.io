@@ -32,17 +32,17 @@ export default function Home({ posts }: { posts: Post[] }) {
           Learning Out Loud And Sharing Along the Way
         </Heading>
         <Paragraph align="center">
-          I've been building software for over a decade, and I'm still learning new stuff all the time.
+          { `I've been building software for over a decade, and I'm still learning new stuff all the time.` }
           <br />
-          This blog is my place to think out loud, document what I'm discovering, and share it in case it helps someone else on a similar path.
+          { `This blog is my place to think out loud, document what I'm discovering, and share it in case it helps someone else on a similar path.` }
           <br /><br />
-          Whenever I can, I turn what I learn into guides, quick tips, or step-by-step tutorials. If I struggled with something, maybe you don't have to.
+          { `Whenever I can, I turn what I learn into guides, quick tips, or step-by-step tutorials. If I struggled with something, maybe you don't have to.` }
           <br />
-          Topics range from backend to frontend, cloud to command line, depending on what I'm into at the moment.
+          { `Topics range from backend to frontend, cloud to command line, depending on what I'm into at the moment.` }
           <br /><br />        
-          Expect a mix of programming notes, thoughts on tech leadership, architecture challenges, and occasional reflections on career and life in tech.
+          { `Expect a mix of programming notes, thoughts on tech leadership, architecture challenges, and occasional reflections on career and life in tech.` }
           <br />
-          No polished guru talk, just honest lessons from the trenches.
+          { `No polished guru talk, just honest lessons from the trenches.` }
         </Paragraph>
       </div>
 
