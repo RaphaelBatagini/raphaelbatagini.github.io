@@ -65,12 +65,12 @@ export default function Article({ post }: ArticleProps) {
         </div>
 
         <div className="my-8 flex flex-col sm:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-100">
             <FiUser className="mr-2" />
             <p>Written by:</p>
             <p className="ml-2">{post.author.name}</p>
           </div>
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-100">
             <FiCalendar className="mr-2" />
             <p>Published on:</p>
             <p className="ml-2">{post.publishDate}</p>

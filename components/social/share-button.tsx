@@ -1,5 +1,4 @@
 import { FiFacebook, FiLinkedin, FiTwitter } from "react-icons/fi";
-import CommonLink from "../link";
 import Button from "../button";
 
 export default function ShareButton({
@@ -25,7 +24,6 @@ export default function ShareButton({
     <Button
       url={socialNetworks[socialNetwork]}
       externalUrl
-      color="gray"
     >
       {socialIcon[socialNetwork]}
     </Button>
