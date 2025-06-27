@@ -9,12 +9,12 @@ export default function RecentArticlesCarousel({ posts }: { posts: Post[] }) {
 
   return (
     <section className="py-8 w-full">
-      <Heading level={2} align="center" noSpaces className="mb-4">Recent Articles</Heading>
+      <Heading level={2} align="center" noSpaces className="mb-4">📚 Recent Articles</Heading>
 
       <Paragraph align="center" className="mb-8">
-        { "I believe that knowledge empowers, and my aim is to equip you with the tools you need to thrive in this fast-paced technological era." }
+        { `I don't have a content calendar or SEO strategy. I write when I have something worth saying or when I need to think something through.` }
         <br/>
-        { "Valuable insights, tutorials, and best practices." }
+        { `Either way, thanks for being here. Hope you find something useful.` }
       </Paragraph>
 
       <div className="flex flex-col md:flex-row gap-4 justify-center pb-4">
@@ -24,7 +24,7 @@ export default function RecentArticlesCarousel({ posts }: { posts: Post[] }) {
       </div>
 
       <div className="text-center mt-4">
-        <Button url={process.env.NEXT_PUBLIC_LINK_ARTICLES ?? ""} color="blue">
+        <Button url={process.env.NEXT_PUBLIC_LINK_ARTICLES ?? ""}>
           See all articles
         </Button>
       </div>

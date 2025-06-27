@@ -14,22 +14,30 @@ export default function Contacts() {
         Feel free to reach out to me on social media or through the contact information provided below:
       </Paragraph>
       <div className="flex flex-col space-y-4 w-full lg:w-96">
-        <Button url={process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN!} color="blue" externalUrl>
+        {process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN && (
+          <Button url={process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN} externalUrl>
             <FaLinkedin className="mr-3" />
             Connect with me on LinkedIn
-        </Button>
-        <Button url={process.env.NEXT_PUBLIC_SOCIAL_GITHUB!} color="gray" externalUrl>
+          </Button>
+        )}
+        {process.env.NEXT_PUBLIC_SOCIAL_GITHUB && (
+          <Button url={process.env.NEXT_PUBLIC_SOCIAL_GITHUB} externalUrl>
             <FaGithub className="mr-3" />
             Check out my GitHub repositories
-        </Button>
-        <Button url={ process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE! } color="red" externalUrl>
+          </Button>
+        )}
+        {process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE && (
+          <Button url={process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE} externalUrl>
             <FaYoutube className="mr-3" />
             Subscribe to my YouTube channel
-        </Button>
-        <Button url={ process.env.NEXT_PUBLIC_SOCIAL_TWITTER! } color="cyan" externalUrl>
+          </Button>
+        )}
+        {process.env.NEXT_PUBLIC_SOCIAL_TWITTER && (
+          <Button url={process.env.NEXT_PUBLIC_SOCIAL_TWITTER} externalUrl>
             <FaTwitter className="mr-3" />
             Follow me on Twitter
-        </Button>
+          </Button>
+        )}
       </div>
       <Paragraph>
         For any other inquiries or to get in touch, you can also reach me via email at <CommonLink href={`mailto:${process.env.NEXT_PUBLIC_SITE_EMAIL}`}>{process.env.NEXT_PUBLIC_SITE_EMAIL}</CommonLink>.

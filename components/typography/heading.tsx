@@ -6,20 +6,18 @@ export default function Heading({
   align = "left",
   noSpaces = false,
   children,
-  color = "gray-800",
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & {
   level: number;
   levelSize?: number;
   align?: "left" | "center" | "right";
   noSpaces?: boolean;
-  color?: string;
   children: React.ReactNode;
 }) {
   const HeadingTag = `h${level}`;
 
   props.className = props.className ?? '';
-  props.className += ` font-bold text-${color}`;
+  props.className += ` font-bold text-gray-100 text-shadow-2xs text-shadow-pink-300 leading-tight`;
 
   if (!noSpaces) {
     props.className += ' mt-6 mb-2';

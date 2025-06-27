@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run generate-images && next dev",
+    "dev:custom": "next dev",
     "build": "npm run generate-images && next build",
     "start": "next start",
     "lint": "next lint",

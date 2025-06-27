@@ -3,7 +3,7 @@ import Footer from '../components/footer';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-200">
+    <div className="flex flex-col min-h-screen bg-gray-950">
       <Navbar />
       <main className="flex-grow flex">
         <div className="container mx-auto px-4 my-1">

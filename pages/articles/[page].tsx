@@ -51,7 +51,7 @@ export default function Article({
       {/* Pagination */}
       <div className="flex flex-col md:flex-row place-content-between my-4">
         <div className="flex items-center justify-center">
-          <Paragraph className="text-gray-700">
+          <Paragraph className="text-gray-100">
             {paginationText}
           </Paragraph>
         </div>
@@ -59,8 +59,8 @@ export default function Article({
           <button
             className={`px-2 py-1 rounded-md ${
               currentPage === 1
-                ? "text-gray-500 cursor-not-allowed"
-                : "text-gray-700 hover:text-gray-900"
+                ? "text-gray-600 cursor-not-allowed"
+                : "text-gray-100 hover:text-gray-300"
             }`}
             onClick={() => handlePagination("previous")}
             disabled={currentPage === 1}
@@ -72,8 +72,8 @@ export default function Article({
           <button
             className={`ml-4 px-2 py-1 rounded-md ${
               currentPage === totalPages
-                ? "text-gray-500 cursor-not-allowed"
-                : "text-gray-700 hover:text-gray-900"
+                ? "text-gray-600 cursor-not-allowed"
+                : "text-gray-100 hover:text-gray-300"
             }`}
             onClick={() => handlePagination("next")}
             disabled={currentPage === totalPages}

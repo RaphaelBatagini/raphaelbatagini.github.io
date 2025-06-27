@@ -17,12 +17,12 @@ export default function PostCardVertical({
   return (
     <div
       key={post.id}
-      className={`${className} flex flex-col bg-white rounded-lg shadow-md hover:shadow-xl hover:bg-gray-100 p-4`}
+      className={`${className} flex flex-col bg-gray-800 rounded-lg shadow-md hover:shadow-xl p-4`}
     >
       <PostThumbnail post={post} className="rounded-lg mb-4" />
       <div className="flex flex-col">
         <div className="flex-grow flex flex-col">
-          <Paragraph noSpaces className="text-gray-800 font-bold">
+          <Paragraph noSpaces className="text-gray-100">
             {post.categories?.[0]}
           </Paragraph>
           <Heading level={titleHeadingLevel ?? 3} levelSize={3} noSpaces>
@@ -39,7 +39,6 @@ export default function PostCardVertical({
       <div className="flex flex-col flex-grow">
         <div className="mt-auto">
           <Button
-            color="gray"
             url={`/article/${post.id}`}
             className="w-full mt-3"
           >

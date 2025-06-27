@@ -10,7 +10,7 @@ export default function Paragraph({
   className?: string;
 }) {
   props.className = props.className ?? "";
-  props.className += " text-base text-gray-600 leading-relaxed";
+  props.className += " text-base text-gray-300 leading-relaxed";
 
   if (!noSpaces) {
     props.className += " mt-4 mb-2";

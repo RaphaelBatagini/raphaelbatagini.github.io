@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { FiMenu, FiX } from 'react-icons/fi';
+import CommonLink from './link';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,9 +19,9 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href={process.env.NEXT_PUBLIC_LINK_HOME ?? ''} onClick={closeMobileMenu} className="text-white text-lg font-bold">
+            <CommonLink href={process.env.NEXT_PUBLIC_LINK_HOME ?? ''} onClick={closeMobileMenu} highlight={false} className="text-lg font-bold">
               { process.env.NEXT_PUBLIC_SITE_TITLE }
-            </Link>
+            </CommonLink>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">

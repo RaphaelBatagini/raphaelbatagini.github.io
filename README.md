@@ -77,7 +77,7 @@ ACCESS_TOKEN=<your-github-access-token>
 
 - Replace `https://your-username.github.io` with the URL where your blog will be hosted.
 - Fill in the appropriate values for site title, description, author information, social links, and navigation links.
-- Specify your GitHub access token, which requires the `repo` scope for reading repository files.
+- Specify your GitHub access token, which requires the `repo` scope for reading repository files. Clicke here to understand how to create a new [GitHub Fine-Grained Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token).
 - Set `NEXT_PUBLIC_POSTS_REPO` to your repository containing the blog posts. If you don't have one, create a new repository to store your blog posts using the [personal-blog-posts-template](https://github.com/RaphaelBatagini/personal-blog-posts-template).
 
 ### Step 3: Generate Images

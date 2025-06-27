@@ -4,30 +4,28 @@ export default function CommonLink({
   href,
   children,
   externalUrl = false,
+  highlight = true,
   className,
+  onClick,
 }: {
   href: string;
   children: any;
   externalUrl?: boolean;
+  highlight?: boolean;
   className?: string;
+  onClick?: () => void;
 }) {
-  const classes = `text-blue-500 hover:text-blue-600 ${className}`;
+  const classes = highlight ? `text-pink-600 hover:text-gray-100 hover:underline ${className}` : `text-gray-100 hover:text-pink-600 ${className}`;
 
-  if (externalUrl) {
-    return (
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classes}
-      >
-        {children}
-      </Link>
-    );
-  }
+  const linkProperties = {
+    className: classes,
+    onClick: onClick,
+    target: externalUrl ? "_blank" : undefined,
+    rel: externalUrl ? "noopener noreferrer" : undefined,
+  };
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} {...linkProperties}>
       {children}
     </Link>
   );
