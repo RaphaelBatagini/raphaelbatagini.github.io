@@ -6,6 +6,7 @@ export default function Heading({
   align = "left",
   noSpaces = false,
   children,
+  color="gray-100",
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & {
   level: number;
@@ -17,7 +18,7 @@ export default function Heading({
   const HeadingTag = `h${level}`;
 
   props.className = props.className ?? '';
-  props.className += ` font-bold text-gray-100 text-shadow-2xs text-shadow-pink-300 leading-tight`;
+  props.className += ` font-bold text-${color}`;
 
   if (!noSpaces) {
     props.className += ' mt-6 mb-2';

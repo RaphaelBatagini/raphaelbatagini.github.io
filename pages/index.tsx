@@ -20,7 +20,7 @@ export default function Home({ posts }: { posts: Post[] }) {
         alt="Author photo"
         className="rounded-full object-cover"
       />
-      <Heading level={1}>
+      <Heading level={1} color='pink-600'>
         {process.env.NEXT_PUBLIC_SITE_TITLE}
       </Heading>
       <Paragraph noSpaces className="mb-10">
