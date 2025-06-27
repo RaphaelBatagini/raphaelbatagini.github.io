@@ -11,7 +11,7 @@ import ContactCtaSection from "@/components/section/contact-cta";
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (
-    <div className="flex flex-col items-center justify-center my-10">
+    <div className="flex flex-col items-center justify-center text-center my-10">
       <Head />
       <Image
         src={getAuthorPhotoPath('profile')}
